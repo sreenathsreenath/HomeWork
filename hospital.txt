@@ -1,0 +1,210 @@
+[Yesterday 4:58 PM] Obuli Sundar
+    
+
+drop database if exists Tasks;
+
+
+create database Tasks;
+
+
+use Tasks;
+
+
+
+create table COURSES
+(
+CCODE int,
+PRIMARY key(CCODE),
+Name VARCHAR(30),
+DURATION Numeric(3),
+FEE numeric(5),
+PREREQUISITE varchar(100) ,
+check(FEE>=1000),
+check(DURATION>=0)
+);
+insert into COURSES(CCODE,Name,DURATION,FEE,PREREQUISITE)
+ value(201,'english',60,10000,'Not Needed'),
+ (202,'Java',45,15000,'Basic in Java'),
+ (203,'Sql',66,12000,'Basics in Quries'),
+ (204,'C++',76,13000,'Not Needed'),
+ (205,'Python',23,21000,'Basics in Python');
+
+
+
+create table Faculty
+(
+FACCODE varchar(30),
+PRIMARY KEY (FACCODE),
+NAME varchar(30),
+QUAL varchar(30),
+EXP varchar(100)
+);
+insert into Faculty(FACCODE,NAME,QUAL,EXP) 
+value(101,'obuli','Senior java devloper','one year'),
+(102,'sundar','Senior  coder','two year'),
+(103,'Chandru','Senior devloper','five years'),
+(104,'gowtham','Senior java ','ten years');
+
+
+create table COURSEFACULTY
+(
+FACCODE varchar(30),
+CCODE varchar(30),
+GRADE varchar(20),
+foreign key(FACCODE) references FACULTY(FACCODE),
+foreign key(CCODE) references COURSES(CCODE) ,
+check ( upper(grade) in ('A','B','C'))
+);
+
+
+
+
+create table BATCHES
+(
+BCODE varchar(25) ,
+PRIMARY KEY(BCODE),
+CCODE varchar(30),
+FACCODE varchar(30),
+STDATE date,
+ENDDATE date,
+TIMING numeric(1),
+foreign key(CCODE) references COURSES(CCODE),
+foreign key(FACCODE) references FACULTY(FACCODE),
+check(STDATE<=ENDDATE) ,
+check( timing in (1,2,3) )
+);
+create table STUDENTS(
+ROLLNO numeric(5),
+primary key(ROLLNO),
+BCODE varchar(5),
+NAME varchar(30),
+GENDER char(1),
+DJ date,
+PHONE varchar(20),
+EMAIL varchar(20) ,
+-- foreign key(BCODE) references BATCHES(BCODE) ,
+FOREIGN KEY (BCODE) REFERENCES BATCHES(BCODE),
+check( upper(gender) in ('M','F'))
+);
+
+
+
+
+create table PAYMENTS(
+ROLLNO numeric(5) ,
+DP date,
+AMOUNT numeric(10) ,
+CHECK(AMOUNT>=25)
+
+
+
+);
+
+
+ -- 1) Display all matchingrecords from batches and Courses table. 
+       SELECT *FROM COURSES
+    
+
+
+
+
+
+
+
+
+
+
+
+​[Yesterday 4:59 PM] Obuli Sundar
+    table cource and table faculty varikum aaguthu 
+​[Yesterday 4:59 PM] Obuli Sundar
+    values kuduthu
+​[Yesterday 5:25 PM] Obuli Sundar
+    
+drop database if exists HMS;
+create database HMS;
+
+
+use HMS;
+
+
+create table DOCTOR_MASTER(
+doctor_id varchar(30),
+doctor_name varchar(30),
+Dept varchar(30) ,
+primary key(doctor_id)
+);
+insert into DOCTOR_MASTER (doctor_id ,doctor_name ,Dept)
+Values('D1','arul','Eye'),
+('D2','balaji','Eye'),
+('D3','sama','Physyo'),
+('D4','abu','Nuro'),
+('D5','nandy','Nuro'),
+('D6','priya','Nuro');
+select* from DOCTOR_MASTER;
+
+
+
+create table ROOM_MASTER
+(room_no varchar(20),
+room_type varchar(20),
+status varchar(20)
+);
+insert into ROOM_MASTER(room_no,room_type ,status)
+VALUES('R1','Gendral','vacant'),
+('R2','AC','occupied'),
+('R3','NonAC','in service'),
+('R4','NonAC','occupied'),
+('R','Seprate','vacant'),
+('R0006','Seprate','occupied');
+
+
+
+
+
+create table PATIENT_MASTER
+(
+pid varchar(25),
+name varchar(30),
+age numeric,
+weight numeric ,
+gender varchar(8),
+address varchar(30),
+phoneno numeric,
+disease varchar(25),
+doctor_id varchar(30) ,
+foreign key (doctor_id) references DOCTOR_MASTER(doctor_id)
+);
+insert into PATIENT_MASTER(pid,name ,age ,weight ,gender ,address ,phoneno ,disease ,doctor_id )
+Values('P1','Banu','22','56','F','Salem','87876756478','Eye Infection','D2'),
+('P2','Goetham','54','65','M','coimbature','7897685675','Leg pain','D3'),
+('P3','Rani','25','45','F','Erode','9324564534','Brain Tumer','D5'),
+('P4','Keerthi','64','55','F','Kolkata','8655656565','Eye Infection','D1'),
+('P5','Chandru','75','65','M','Banglore','989876789','Nurve pain','D4');
+
+
+
+
+
+create table ROOM_ALLOCATION
+(room_no varchar(30),
+pid varchar(25),
+admission_date varchar(25) ,
+release_date varchar(25)
+);
+
+
+insert into ROOM_ALLOCATION (room_no , pid ,admission_date ,release_date )
+values ( 'R1','P1','11-sep-20','21-sep-20'),
+('R2','P2','21-dec-20','22-dec-20'),
+('R2','P3','31-jan-21','03-jan-21')
+
+
+
+
+
+
+
+
+
+

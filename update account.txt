@@ -1,0 +1,77 @@
+[Yesterday 9:52 AM] Rajesh Mohan
+    
+
+
+
+public class UpdateAccountMain {​​​​​​
+public static void main(String[] args) {​​​​​​
+
+Scanner sc= new Scanner(System.in);
+Bank bank= new Bank();
+System.out.println("Enter AccountNO");
+bank.setAccountNo(sc.nextInt());
+System.out.println("Enter FirstName ");
+bank.setFirstName(sc.next());
+System.out.println("Enter LastName ");
+bank.setLastName(sc.next());
+System.out.println("Enter City ");
+bank.setCity(sc.next());
+System.out.println("Enter State ");
+bank.setState(sc.next());
+System.out.println("Enter Amount ");
+bank.setAmount(sc.nextInt());
+System.out.println("Enter CheqFacil ");
+bank.setCheqFacil(sc.next());
+System.out.println("Enter AccountType ");
+bank.setAccountType(sc.next());
+BankDAO dao= new BankDAO();
+try {​​​​​​
+System.out.println(dao.updateAccount(bank));
+}​​​​​​ catch (ClassNotFoundException | SQLException e) {​​​​​​
+// TODO Auto-generated catch block
+e.printStackTrace();
+}​​​​​​
+}​​​​​​
+}​​​​​​
+
+
+​[Yesterday 10:00 AM] Rajesh Mohan
+    
+
+public String updateAccount(Bank bank) throws ClassNotFoundException, SQLException {​​​​​​
+
+
+Bank old = searchAccNo(bank.getAccountNo());
+if (old != null) {​​​​​​
+connection = ConnectionHelper.getConnection();
+String cmd = "Update Bank set FirstName=?,LastName=?,city=?,state=?,Amount=?,CheqFacil=?,AccountType=? where AccountNO=?";
+PreparedStatement pst = connection.prepareStatement(cmd);
+pst.setString(1, bank.getFirstName());
+pst.setString(2, bank.getLastName());
+pst.setString(3, bank.getCity());
+pst.setString(4, bank.getState());
+pst.setInt(5, bank.getAmount());
+pst.setString(6, bank.getCheqFacil());
+pst.setString(7, bank.getAccountType());
+pst.setInt(8, bank.getAccountNo());
+int result = pst.executeUpdate();
+if (result == 1) {​​​​​​
+return "record updated";
+}​​​​​​ else {​​​​​​
+return "failed to update";
+}​​​​​​
+
+
+}​​​​​​ else {​​​​​​
+
+
+return "record not found";
+}​​​​​​
+
+
+}​​​​​​
+
+
+
+
+
