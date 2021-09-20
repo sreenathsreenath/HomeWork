@@ -1,0 +1,36 @@
+public String updateAccount(Bank bank) throws ClassNotFoundException, SQLException {
+
+ 
+
+Bank old = searchAccNo(bank.getAccountNo());
+if (old != null) {
+connection = ConnectionHelper.getConnection();
+String cmd = "Update Bank set FirstName=?,LastName=?,city=?,state=?,Amount=?,CheqFacil=?,AccountType=? where AccountNO=?";
+PreparedStatement pst = connection.prepareStatement(cmd);
+pst.setString(1, bank.getFirstName());
+pst.setString(2, bank.getLastName());
+pst.setString(3, bank.getCity());
+pst.setString(4, bank.getState());
+pst.setInt(5, bank.getAmount());
+pst.setString(6, bank.getCheqFacil());
+pst.setString(7, bank.getAccountType());
+pst.setInt(8, bank.getAccountNo());
+int result = pst.executeUpdate();
+if (result == 1) {
+return "record updated";
+} else {
+return "failed to update";
+}
+
+ 
+
+} else {
+
+ 
+
+return "record not found";
+}
+
+ 
+
+}
