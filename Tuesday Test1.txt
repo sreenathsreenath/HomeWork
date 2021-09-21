@@ -1,0 +1,337 @@
+java1 Answers
+
+
+
+1) What would be the output for the below code
+public class ArgsDemo {
+    String company = "Hexaware";
+public static void main(String[] args) {
+System.out.println(args[0] + " " +args[2]);
+    }
+}
+Java ArgsDemo asil prajwal sashwat
+
+ Output: compile time error
+
+_________________________________________
+
+2) What is output
+public class P1 {
+public static void main(String[] args) {
+int i=10;
+       // int j=i++;
+int j = ++i;
+System.out.println(i + " " +j);
+    }
+}
+
+Output : 11 11 
+______________________
+
+3) What is the output for
+class Demo {
+static {
+System.out.println("Demo Static...");
+    }
+}
+class C1 { 
+static {
+System.out.println("C1 con");
+    }
+public C1() {
+System.out.println("Constructor C1");
+    }
+}
+class C2 extends C1 { 
+static {
+System.out.println("C2 con");
+    }
+public C2() {
+System.out.println("Constructor C2");
+    }
+}
+public class P6 {
+public static void main(String[] args) {
+       C2 obj = new C2();
+    }
+}
+
+Output:
+C1 con
+
+C2 con
+
+Constructor C1
+
+Constructor C2
+_________________________________________
+
+4) What is the output for
+Int[] a = new int[]{12,4,6,33,23};
+for(int i : a) {
+System.out.println(a);
+}
+
+Output :- It Prints HashCode
+
+_________________________________________
+
+5) What is the return type for constructor
+
+Output :Constructor Doesnt Return Anything
+
+_________________________________________
+
+6) Which statements are true
+a) NullPointerException thrown when an object used without allocating memory
+b) You can create custom exception class by extending the Exception class
+c) Division by zero generates ArrayIndexOutOfBoundsException
+d) An object that has not been allocated memory will holds a null value
+
+
+Output:  A,B,and D are true
+_________________________________________
+
+7) Final class 
+a) Can be inherited
+b) Cannot be inherited
+c) Cannot create an object
+d) Cannot have constructor
+
+Output: Final Class Cannot Be Inherited
+________________________________________
+
+8)
+interfaceIOne {
+void f1();
+public void f2();
+protected void f3();
+private void f4();
+}
+
+which lines will give compilation error
+
+Output:  line 2 and Line 3
+_________________________________________
+
+9) What is the output
+int[] a=new int[6];
+a[10]=66;
+
+Output: arrayIndexOutOfBoundsException will given as output
+_________________________________________
+
+
+10) public class Ex2 {
+int a=18;
+public static void show() {
+System.out.println("Age  " +a);
+    }
+public static void main(String[] args) {
+new Ex2().show();
+    }
+}
+What is output 
+
+Compile time error ,static methods will not access not static variables
+
+Output: static reference cant be made to  non static field
+_________________________________________
+
+12) Identify which statements are true or false
+Overloaded methods should differ in arg list 
+Overloaded methods may differ in return type 
+Overloaded methods may differ in access specifier
+
+Output: 1) True, 2) True, 3) false
+_________________________________________
+
+13)
+public class Ex3 {
+
+public static void main(String[] args) {
+       String month;
+month = "Feb";
+switch(month) {
+case "Feb" : System.out.println("Hi");
+break;
+case "Mar" : System.out.println("Hello");
+break;
+case "Apr" : System.out.println("Bye");
+break;
+case "May" : System.out.println("Test");
+break;
+default :
+System.out.println("Default");
+break;
+
+       }
+    }
+}
+
+Output: Hi
+_________________________________________
+
+14) What would be output
+interface Mobile {
+int memory=10;
+public void calling();
+}
+
+interface Accessories extends Mobile {
+public abstract void headPhone();
+}
+
+
+public class Ex3 implements Accessories {
+
+public static void main(String[] args) { // line 4
+public void headPhone() {
+System.out.println("Hi");
+       }
+    }
+}
+
+Output: Compile Time Error
+
+_________________________________________
+.
+15) What would be output for
+class Test {
+void tests() {
+System.out.println("Hi");
+    }
+}
+
+class Fest extends Test {
+static void tests() {
+System.out.println("Bye");
+    }
+}
+public class Ex3 {
+
+public static void main(String[] args) { // line 4
+     Test obj = new Test();
+obj.tests();
+    }
+}
+
+Output : Hi ,We cannot add static method to instance method
+_________________________________________
+
+16) What would be output for the below code
+public class Ex3 {
+static Ex3() { System.out.println("Hello");}
+public static void main(String[] args) { 
+System.out.println("Hi");
+    }
+}
+Output:Compile Time Error-Class declared as static values cannot be changed
+_________________________________________
+
+17) What would be output
+public class Ex3 {
+
+public static void main(String[] args) { 
+        String s1="abc";
+        String s2="abc";
+System.out.println(s1==s2);
+System.out.println(s1.equals(s2));
+    }
+}
+
+Output: True
+	True
+_________________________________________
+
+
+18) To access a method in same package and other package derived classes, which modifier we want
+Output:Protected
+_________________________________________
+
+19) public class Ex3 {
+
+public Ex3() {}
+public static void main(String[] args) { 
+    }
+}
+What is public Ex3() here
+
+A static method can be called as class method (T/F)
+
+Output: constructor
+true
+_________________________________________
+
+20)
+public class Ex3 {
+
+public Ex3() {}
+public static void main(String[] args) { 
+        String res = "i" + "like" + "java";
+System.out.println(res);
+    }
+}
+Output:ilikejava
+_________________________________________
+
+22) What would be output
+public class Ex3 {
+
+static {
+System.out.println("Hi");
+  }
+static {
+System.out.println("Bye");
+  }
+}
+Output: hi,bye
+_________________________________________
+
+23) 
+interfaceIOne {
+int a=10;
+void draw();
+  }
+
+public class Ex3 implements IOne {
+
+public void draw() {}
+public static void main(String[] args) { 
+System.out.println(a++);
+    }
+}
+Output:11
+_________________________________________
+
+24) What 
+public class P9 {
+    static int count=0;
+   public void increment()
+   {
+       count++;
+   }
+   public static void main(String args[])
+   {
+       P9 obj1=new P9();
+       P9 obj2=new P9();
+       obj1.increment();
+       obj2.increment();
+       System.out.println("Obj1: count is="+obj1.count);
+
+       System.out.println("Obj2: count is="+obj2.count);
+   }
+}
+Output: Obj1 count is=2
+	Obj2 count is=2
+_________________________________________
+
+
+25) What would be output for
+
+public class Hello extends String {
+public static void main(String[] args) {
+System.out.println("Hello World...");
+  }
+}
+Output: Compile Time Error
